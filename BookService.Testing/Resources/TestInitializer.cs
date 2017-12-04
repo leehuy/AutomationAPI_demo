@@ -22,7 +22,7 @@ namespace BookService.Testing.Resources
             public static void BeforeTestRun()
             {
 
-            //SetupLocalDb();
+            SetupLocalDb();
 
             SetupInMemoryServer();
 

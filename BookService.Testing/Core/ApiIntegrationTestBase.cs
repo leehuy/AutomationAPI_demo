@@ -30,6 +30,7 @@ namespace BookService.Testing.Core
                     //app.UseWebApi(config);
                     //AutoMapperConfiguration.Configure();
 
+                    SetInMemoryUnityContainer();
                     var config = new HttpConfiguration();
                     WebApiConfig.Register(config);
                     app.UseWebApi(config);

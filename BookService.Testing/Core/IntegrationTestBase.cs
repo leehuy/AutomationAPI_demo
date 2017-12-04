@@ -2,6 +2,11 @@
 using System.Configuration;
 //using System.Data.EntityClient;
 //using Microsoft.Practices.Unity;
+//using System.Data.Entity;
+//using Microsoft.Practices.Unity;
+//using Unity;
+//using Unity.Injection;
+//using Microsoft.SqlServer.Management.Smo;
 
 namespace BookService.Testing.Core
 {
@@ -35,36 +40,47 @@ namespace BookService.Testing.Core
             DatabaseManager.Dispose();
         }
 
-        //public static void SetInMemoryUnityContainer()
-        //{
-        //    var container = new UnityContainer();
-        //    container.RegisterType<ITestContext, IntegrationTestContext>(
-        //        new InjectionProperty("PooledCoverFundDbConnection", GetDiagnosticsEntityConnectionString()),
-        //        new InjectionProperty("BusinessDbConnection", GetBusinessConnectionString()),
-        //        new InjectionProperty("ServerDbConnection", GetServerCurrencyConnectionString()));
+        public static void SetInMemoryUnityContainer()
+        {
+            //var container = new UnityContainer();
+            //container.RegisterType<ITestContext, IntegrationTestContext>(
+            //    new InjectionProperty("PooledCoverFundDbConnection", GetDiagnosticsEntityConnectionString()),
+            //    new InjectionProperty("BusinessDbConnection", GetBusinessConnectionString()),
+            //    new InjectionProperty("ServerDbConnection", GetServerCurrencyConnectionString()));
 
-        //    SetupTranslationConnectionString();
+            //SetupTranslationConnectionString();
 
-        //    InMemoryUnityContainer = container;
-        //}
+            //InMemoryUnityContainer = container;
 
-        //protected static string GetDiagnosticsEntityConnectionString()
-        //{
-        //    var configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-        //    var connectionStringsSection = (ConnectionStringsSection)configuration.GetSection("connectionStrings");
+            GetDiagnosticsEntityConnectionString();
+        }
 
-        //    connectionStringsSection.ConnectionStrings["PooledCoverFundModel"].ConnectionString =
-        //        new EntityConnectionStringBuilder
-        //        {
-        //            ProviderConnectionString = DatabaseManager.ConnectionString,
-        //            Provider = "System.Data.SqlClient",
-        //            Metadata = "res://*/PooledCoverFundModel.csdl|res://*/PooledCoverFundModel.ssdl|res://*/PooledCoverFundModel.msl"
-        //        }.ConnectionString;
+        protected static string GetDiagnosticsEntityConnectionString()
+        {
+            //var configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //var connectionStringsSection = (ConnectionStringsSection)configuration.GetSection("connectionStrings");
 
-        //    configuration.Save();
-        //    ConfigurationManager.RefreshSection("connectionStrings");
-        //    return connectionStringsSection.ConnectionStrings["PooledCoverFundModel"].ConnectionString;
-        //}
+            //connectionStringsSection.ConnectionStrings["PooledCoverFundModel"].ConnectionString =
+            //    new EntityConnectionStringBuilder
+            //    {
+            //        ProviderConnectionString = DatabaseManager.ConnectionString,
+            //        Provider = "System.Data.SqlClient",
+            //        Metadata = "res://*/PooledCoverFundModel.csdl|res://*/PooledCoverFundModel.ssdl|res://*/PooledCoverFundModel.msl"
+            //    }.ConnectionString;
+
+            //configuration.Save();
+            //ConfigurationManager.RefreshSection("connectionStrings");
+            //return connectionStringsSection.ConnectionStrings["PooledCoverFundModel"].ConnectionString;
+
+     
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.ConnectionStrings.ConnectionStrings["BookServiceContext"].ConnectionString = DatabaseManager.ConnectionString;
+            config.Save(ConfigurationSaveMode.Modified, true);
+            ConfigurationManager.RefreshSection("connectionStrings");
+
+            return ConfigurationManager.ConnectionStrings["BookServiceContext"].ConnectionString;
+        }
 
         //protected static string GetServerCurrencyConnectionString()
         //{
@@ -109,7 +125,7 @@ namespace BookService.Testing.Core
         private static string CreateUniqueDatabaseName()
         {
             var suffix = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            return string.Format("huy_demo_{0}", suffix);
+            return string.Format("BookServiceContext_{0}", suffix);
         }
     }
 }
