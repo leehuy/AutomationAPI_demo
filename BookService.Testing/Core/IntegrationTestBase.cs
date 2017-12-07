@@ -6,7 +6,7 @@ using System.Configuration;
 //using Microsoft.Practices.Unity;
 //using Unity;
 //using Unity.Injection;
-//using Microsoft.SqlServer.Management.Smo;
+using Microsoft.SqlServer.Management.Smo;
 
 namespace BookService.Testing.Core
 {
@@ -74,7 +74,7 @@ namespace BookService.Testing.Core
 
      
 
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             config.ConnectionStrings.ConnectionStrings["BookServiceContext"].ConnectionString = DatabaseManager.ConnectionString;
             config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("connectionStrings");
