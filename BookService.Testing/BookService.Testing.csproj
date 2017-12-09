@@ -38,7 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DatabaseConfiguration\DbAuthors.cs" />
     <Compile Include="DatabaseConfiguration\DbBook.cs" />
+    <Compile Include="DatabaseConfiguration\DbFunction.cs" />
     <Compile Include="Resources\CommonActions.cs" />
     <Compile Include="Resources\CreateData.cs" />
     <Compile Include="Resources\GetData.cs" />

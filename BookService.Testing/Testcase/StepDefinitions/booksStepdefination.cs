@@ -13,10 +13,9 @@ namespace BookService.Testing.Testcase.StepDefinitions
     public sealed class booksStepdefination : ApiIntegrationTestBase
     {
         private static HttpResponseMessage _response;
-        //private string _requesturi;
-
+        
         [Given(@"I get the request to server:(.*)")]
-        public void GivenIGetTheRequestToServer(string url)
+        public void GivenIGetTheRequestToServerApiBooks(string url)
         {
             _response = GetAuthorizedRequest(url).GetAsync().Result;
         }
@@ -44,5 +43,6 @@ namespace BookService.Testing.Testcase.StepDefinitions
                 Assert.IsTrue(data.Contains("\"AuthorId\":" + row[5]));
             }
         }
+
     }
 }

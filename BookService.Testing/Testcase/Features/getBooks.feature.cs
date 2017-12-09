@@ -83,13 +83,21 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.Then("I get the returned message with code:", ((string)(null)), table1, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "StatusCode",
-                        "ReasonPhrase"});
+                        "Id",
+                        "Title",
+                        "Year",
+                        "Price",
+                        "Genre",
+                        "AuthorId"});
             table2.AddRow(new string[] {
-                        "200",
-                        "OK"});
+                        "1",
+                        "Pride and Prejudice",
+                        "1813",
+                        "9.99",
+                        "Comedy of manners",
+                        "1"});
 #line 9
- testRunner.Then("I get the returned message with code:", ((string)(null)), table2, "Then ");
+ testRunner.And("Respone message Book details with the same data:", ((string)(null)), table2, "And ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -1,32 +1,45 @@
 ﻿using System;
+using BookService.Testing.Core;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace BookService.Testing.DatabaseConfiguration
 {
     public class DbBook
     {
-        public static void InsertDataInAccountTable(string uid, string sysInsertTime, string sysInsertAccountUid, string mandatorUid, string financingUid, string currencyUid, string accountNumber, string regress, string statusUid, string repaymentTypeUid, string denomination, string individualCodeUid, string inactivationDate, string ekey, string openingDate, string description, string comment, string ownershipPromotion)
+        public static void InsertDataInBookTable(string id, string title, string year, string price, string genre, string authorId)
         {
-            //PooledCoverFundModel model = new PooledCoverFundModel();
+            string connectionString = IntegrationTestBase.DatabaseManager.ConnectionString;
+            SqlConnection con = new
+                SqlConnection(connectionString);
+            con.Open();
+            SqlCommand cmd;
+            cmd = new SqlCommand("SET IDENTITY_INSERT [dbo].[Books] ON", con);
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("INSERT into Books(Id, Title, Year, Price, Genre, AuthorId) VALUES (@id,@title,@year,@price,@genre,@authorId)", con);
+            SqlParameter[] parms = new SqlParameter[6];
+            parms[0] = new SqlParameter("@Id", SqlDbType.Int);
+            parms[0].Value = Convert.ToInt32(id);
 
-            //Account account = new Account
-            //{
-            //    UID = new Guid(uid),
-            //    SysInsertTime = Convert.ToDateTime(sysInsertTime),
-            //    SysInsertAccountUID = new Guid(sysInsertAccountUid),
-            //    MandatorUID = new Guid(mandatorUid),
-            //    FinancingUID = new Guid(financingUid),
-            //    CurrencyUID = new Guid(currencyUid),
-            //    AccountNumber = accountNumber,
-            //    Regress = Convert.ToBoolean(regress),
-            //    StatusUID = new Guid(statusUid),
-            //    RepaymentTypeUID = string.IsNullOrEmpty(repaymentTypeUid) ? (Guid?)null : new Guid(repaymentTypeUid),
-            //    Denomination = string.IsNullOrEmpty(denomination) ? (decimal?)null : Convert.ToDecimal(denomination),
-            //    IndividualCodeUID = string.IsNullOrEmpty(individualCodeUid) ? (Guid?)null : new Guid(individualCodeUid),
-            //    OwnershipPromotion = Convert.ToBoolean(ownershipPromotion)
-            //};
+            parms[1] = new SqlParameter("@Title", SqlDbType.VarChar);
+            parms[1].Value = title;
 
-            //model.Account.Add(account);
-            //model.SaveChanges();
+            parms[2] = new SqlParameter("@Year", SqlDbType.Int);
+            parms[2].Value = Convert.ToInt32(year);
+
+            parms[3] = new SqlParameter("@Price", SqlDbType.Decimal);
+            parms[3].Value = Convert.ToDecimal(price);
+
+            parms[4] = new SqlParameter("@Genre", SqlDbType.VarChar);
+            parms[4].Value = genre;
+
+            parms[5] = new SqlParameter("@AuthorId", SqlDbType.Int);
+            parms[5].Value = Convert.ToInt32(authorId);
+
+            cmd.Parameters.AddRange(parms);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
         }
     }
 }
