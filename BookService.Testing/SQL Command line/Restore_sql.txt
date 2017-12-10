@@ -1,0 +1,14 @@
+﻿RESTORE FILELISTONLY
+FROM DISK ='D:\Working\Books.bak'
+
+
+RESTORE DATABASE test
+FROM DISK = 'D:\Working\Books.bak'
+WITH FILE = 1,
+NOUNLOAD,
+STATS = 10,
+RECOVERY,
+REPLACE,
+MOVE 'BookServiceContext-20171126185836.mdf' TO 'D:\Working\Books.mdf',
+MOVE 'BookServiceContext-20171126185836_log.ldf' TO 'D:\Working\Books_Log.ldf'
+GO

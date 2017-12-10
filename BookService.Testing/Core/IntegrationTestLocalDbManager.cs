@@ -25,6 +25,7 @@ namespace BookService.Testing.Core
             try
             {
                 CreateDatabase();
+                RestoreDatabase();
                 Trace.WriteLine(
                     string.Format("DatabaseManager created the local database {0}", Path.Combine(DatabaseDirectory, DatabaseName)));
             }
@@ -66,6 +67,27 @@ namespace BookService.Testing.Core
             sqlConnection.Close();
         }
 
+        private void RestoreDatabase()
+        {
+            //var assemblyLocation = Assembly.GetExecutingAssembly().Location;
+            //var assemblyDirectory = Path.GetDirectoryName(assemblyLocation);
+
+            //if (!System.IO.File.Exists(OutputFolder + "\\Books.bak"))
+            //{
+            //    //string Projectpath = Path.GetFullPath(Path.Combine(Assembly.GetExecutingAssembly().Location, @"..\..\..\Data\"));
+            //    System.IO.File.Copy(assemblyDirectory + "\\Books.bak", OutputFolder + "\\Books.bak");
+            //}
+
+            SqlConnection con = new
+              SqlConnection(@"Data Source=(LocalDb)\mssqllocaldb;Initial Catalog=master;Integrated Security=True");
+
+            con.Open();
+            SqlCommand cmd;
+            cmd = new SqlCommand("RESTORE DATABASE "+ DatabaseName + " FROM DISK = '" + OutputFolder + "\\Books.bak' WITH FILE = 1, NOUNLOAD, STATS = 10, RECOVERY, REPLACE, MOVE 'BookServiceContext-20171126185836.mdf' TO '"+ DatabaseMdfPath + "', MOVE 'BookServiceContext-20171126185836_log.ldf' TO '"+ DatabaseLogPath + "'", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
         private void CreateDatabase()
         {
             var assemblyLocation = Assembly.GetExecutingAssembly().Location;
@@ -104,8 +126,9 @@ namespace BookService.Testing.Core
 
                     cmd.CommandText =
                         "EXEC sp_MSForEachTable 'DISABLE TRIGGER ALL ON ?'  EXEC sp_MSForEachTable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL' EXEC sp_MSForEachTable 'DELETE FROM ?'  EXEC sp_MSForEachTable 'ALTER TABLE ? CHECK CONSTRAINT ALL'  EXEC sp_MSForEachTable 'ENABLE TRIGGER ALL ON ?'";
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery(); 
                 }
+
             }
 
             ConnectionString =

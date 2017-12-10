@@ -14,13 +14,13 @@ namespace BookService.Testing.Resources
             [BeforeScenario]
             public static void BeforeScenario()
             {
-            DbBook.InsertDataInBookTable("1", "Pride and Prejudice", "1813", "9.99", "Comedy of manners", "1");
-            DbBook.InsertDataInBookTable("2", "Northanger Abbey", "1817", "12.95", "Gothic parody", "1");
-            DbBook.InsertDataInBookTable("3", "David Copperfield", "1850", "15.00", "Bildungsroman", "2");
-            DbBook.InsertDataInBookTable("4", "Don Quixote", "1617", "8.95", "Picaresque", "3");
-            DbAuthors.InsertDataInAutherTable("1", "Jane Austen");
-            DbAuthors.InsertDataInAutherTable("2", "Charles Dickens");
-            DbAuthors.InsertDataInAutherTable("3", "Miguel de Cervantes");
+            //DbBook.InsertDataInBookTable("1", "Pride and Prejudice", "1813", "9.99", "Comedy of manners", "1");
+            //DbBook.InsertDataInBookTable("2", "Northanger Abbey", "1817", "12.95", "Gothic parody", "1");
+            //DbBook.InsertDataInBookTable("3", "David Copperfield", "1850", "15.00", "Bildungsroman", "2");
+            //DbBook.InsertDataInBookTable("4", "Don Quixote", "1617", "8.95", "Picaresque", "3");
+            //DbAuthors.InsertDataInAutherTable("1", "Jane Austen");
+            //DbAuthors.InsertDataInAutherTable("2", "Charles Dickens");
+            //DbAuthors.InsertDataInAutherTable("3", "Miguel de Cervantes");
         }
 
             [BeforeTestRun]
@@ -28,7 +28,7 @@ namespace BookService.Testing.Resources
             {
 
             SetupLocalDb();
-            DbFunction.CreateAllTable();
+            //DbFunction.CreateAllTable();
 
             SetupInMemoryServer();
 

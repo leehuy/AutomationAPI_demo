@@ -6,6 +6,20 @@ namespace BookService.Testing.DatabaseConfiguration
 {
     public class DbFunction
     {
+
+        //public static void RestoreDb()
+        //{
+        //    string connectionString = IntegrationTestBase.DatabaseManager.ConnectionString;
+        //    SqlConnection con = new
+        //        SqlConnection(connectionString);
+        //    con.Open();
+        //    SqlCommand cmd;
+        //    cmd = new SqlCommand(@"restore database BookServiceContext_20171210_134429 from disk = 'D:\Working\Books.bak'", con);
+        //    cmd.ExecuteNonQuery();
+        //    con.Close();
+        //}
+
+
         public static void CreateAllTable()
         {
             string connectionString = IntegrationTestBase.DatabaseManager.ConnectionString;
