@@ -1,7 +1,7 @@
-﻿Feature: getBooks
+﻿Feature: getBookbyID
 
-Scenario: get book
-	Given I get the request to server:/api/Books
+Scenario: getBookbyID
+	Given I get the request to server:/api/Books/1
 	Then I get the returned message with code:
 	| StatusCode | ReasonPhrase |
 	| 200        | OK           |

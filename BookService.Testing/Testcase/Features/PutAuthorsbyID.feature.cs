@@ -18,20 +18,20 @@ namespace BookService.Testing.Testcase.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("getBooks")]
-    public partial class GetBooksFeature
+    [NUnit.Framework.DescriptionAttribute("PutAuthorsbyID")]
+    public partial class PutAuthorsbyIDFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "getBooks.feature"
+#line 1 "PutAuthorsbyID.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "getBooks", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "PutAuthorsbyID", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -64,40 +64,37 @@ namespace BookService.Testing.Testcase.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("get book")]
-        public virtual void GetBook()
+        [NUnit.Framework.DescriptionAttribute("Put Author by ID")]
+        public virtual void PutAuthorByID()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("get book", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Put Author by ID", ((string[])(null)));
 #line 3
 this.ScenarioSetup(scenarioInfo);
 #line 4
- testRunner.Given("I get the request to server:/api/Books", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("send a request to server: /api/Authors/", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "StatusCode",
-                        "ReasonPhrase"});
+                        "Name"});
             table1.AddRow(new string[] {
-                        "200",
-                        "OK"});
+                        "huy"});
 #line 5
- testRunner.Then("I get the returned message with code:", ((string)(null)), table1, "Then ");
+ testRunner.And("And I execute request has following info", ((string)(null)), table1, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Id",
-                        "Title",
-                        "Year",
-                        "Price",
-                        "Genre",
-                        "AuthorId"});
+                        "StatusCode",
+                        "ReasonPhrase"});
             table2.AddRow(new string[] {
-                        "1",
-                        "Pride and Prejudice",
-                        "1813",
-                        "9.99",
-                        "Comedy of manners",
-                        "1"});
+                        "201",
+                        "Created"});
 #line 8
- testRunner.And("Respone message Book details with the same data:", ((string)(null)), table2, "And ");
+ testRunner.Then("I get the returned message with code:", ((string)(null)), table2, "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name"});
+            table3.AddRow(new string[] {
+                        "huy"});
+#line 11
+ testRunner.And("Respone message create Auther details with the same data:", ((string)(null)), table3, "And ");
 #line hidden
             this.ScenarioCleanup();
         }

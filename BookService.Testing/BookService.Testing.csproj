@@ -44,10 +44,20 @@
     <Compile Include="Resources\CommonActions.cs" />
     <Compile Include="Resources\CreateData.cs" />
     <Compile Include="Resources\GetData.cs" />
+    <Compile Include="Testcase\Features\getBookbyID.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>getBookbyID.feature</DependentUpon>
+    </Compile>
     <Compile Include="Testcase\Features\getBooks.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>getBooks.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Testcase\Features\PutAuthorsbyID.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PutAuthorsbyID.feature</DependentUpon>
     </Compile>
     <Compile Include="Testcase\StepDefinitions\booksStepdefination.cs" />
     <Compile Include="Trash\BaseApiTestFixture.cs" />
@@ -67,9 +77,17 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="Testcase\Features\getBookbyID.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>getBookbyID.feature.cs</LastGenOutput>
+    </None>
     <None Include="Testcase\Features\getBooks.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>getBooks.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Testcase\Features\PutAuthorsbyID.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PutAuthorsbyID.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

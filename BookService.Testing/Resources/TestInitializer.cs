@@ -45,14 +45,16 @@ namespace BookService.Testing.Resources
         [AfterScenario]
         public static void AfterScenario()
         {
-            DbFunction.DeleteAllData("Books");
-            DbFunction.DeleteAllData("Authors");
+            //DbFunction.DeleteAllData("Books");
+            //DbFunction.DeleteAllData("Authors");
             //DbPawnDeficit.InsertAllPawnDeficit();
         }
 
         [AfterTestRun]
             public static void AfterTestRun()
             {
+                DbFunction.DeleteAllData("Books");
+                DbFunction.DeleteAllData("Authors");
                 CleanupLocalDb();
                 StopInMemoryServer();
             }
