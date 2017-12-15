@@ -71,7 +71,7 @@ namespace BookService.Testing.Testcase.StepDefinitions
         }
 
 
-        [Given(@"And I execute request has following info")]
+        [Given(@"And I execute POST request has following info")]
         public void GivenAndIExecuteRequestHasFollowingInfo(Table Datatable)
         {
             string jsonRequest = null;

@@ -1,8 +1,8 @@
-﻿Feature: PutAuthorsbyID
+﻿Feature: POSTAuthorsbyID
 
-Scenario: Put Author by ID
+Scenario: POST Author by ID
 	Given send a request to server: /api/Authors/
-	And And I execute request has following info
+	And And I execute POST request has following info
 	| Name |
 	| huy  |
 	Then I get the returned message with code:

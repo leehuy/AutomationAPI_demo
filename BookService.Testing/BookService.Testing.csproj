@@ -54,10 +54,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>getBooks.feature</DependentUpon>
     </Compile>
-    <Compile Include="Testcase\Features\PutAuthorsbyID.feature.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Include="Testcase\Features\POSTAuthorsbyID.feature.cs">
+      <DependentUpon>POSTAuthorsbyID.feature</DependentUpon>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PutAuthorsbyID.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Testcase\StepDefinitions\booksStepdefination.cs" />
     <Compile Include="Trash\BaseApiTestFixture.cs" />
@@ -85,9 +85,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>getBooks.feature.cs</LastGenOutput>
     </None>
-    <None Include="Testcase\Features\PutAuthorsbyID.feature">
+    <None Include="Testcase\Features\POSTAuthorsbyID.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>PutAuthorsbyID.feature.cs</LastGenOutput>
+      <LastGenOutput>POSTAuthorsbyID.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
