@@ -55,9 +55,9 @@
       <DependentUpon>getBooks.feature</DependentUpon>
     </Compile>
     <Compile Include="Testcase\Features\POSTAuthorsbyID.feature.cs">
-      <DependentUpon>POSTAuthorsbyID.feature</DependentUpon>
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POSTAuthorsbyID.feature</DependentUpon>
     </Compile>
     <Compile Include="Testcase\StepDefinitions\booksStepdefination.cs" />
     <Compile Include="Trash\BaseApiTestFixture.cs" />
@@ -76,7 +76,13 @@
     <None Include="Data\Books.bak">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
+    <None Include="Ghpr.Core.Settings.json" />
+    <None Include="Ghpr.SpecFlow.Settings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Testcase\Features\getBookbyID.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>getBookbyID.feature.cs</LastGenOutput>
@@ -102,6 +108,18 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Gherkin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=86496cfa5b4a5851, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpecFlow.CustomPlugin.2.2.1\lib\net45\Gherkin.dll</HintPath>
+    </Reference>
+    <Reference Include="Ghpr.Core, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ghpr.Core.0.7.0\lib\net452\Ghpr.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ghpr.NUnit.SpecFlowPlugin, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ghpr.NUnit.SpecFlowPlugin.0.7.0\lib\net452\Ghpr.NUnit.SpecFlowPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Ghpr.SpecFlow.Common, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ghpr.SpecFlow.Common.0.7.0\lib\net452\Ghpr.SpecFlow.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin">
       <HintPath>..\packages\Microsoft.Owin.4.0.0-preview1\lib\net451\Microsoft.Owin.dll</HintPath>
@@ -150,9 +168,24 @@
       <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Mono.Cecil, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.Engine.3.7.0\lib\Mono.Cecil.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit-agent, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.Engine.3.7.0\lib\nunit-agent.exe</HintPath>
+    </Reference>
+    <Reference Include="nunit-agent-x86, Version=3.7.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\NUnit.Engine.3.7.0\lib\nunit-agent-x86.exe</HintPath>
+    </Reference>
+    <Reference Include="nunit.engine, Version=3.7.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.Engine.3.7.0\lib\nunit.engine.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.engine.api, Version=3.0.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.Engine.3.7.0\lib\nunit.engine.api.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
@@ -213,6 +246,15 @@
     <Reference Include="System.Xml" />
     <Reference Include="TechTalk.SpecFlow, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
       <HintPath>..\packages\SpecFlow.2.2.1\lib\net45\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="TechTalk.SpecFlow.Generator, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpecFlow.CustomPlugin.2.2.1\lib\net45\TechTalk.SpecFlow.Generator.dll</HintPath>
+    </Reference>
+    <Reference Include="TechTalk.SpecFlow.Parser, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpecFlow.CustomPlugin.2.2.1\lib\net45\TechTalk.SpecFlow.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="TechTalk.SpecFlow.Utils, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpecFlow.CustomPlugin.2.2.1\lib\net45\TechTalk.SpecFlow.Utils.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
